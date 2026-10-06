@@ -1,125 +1,121 @@
-# Data Preprocessing — Week 1
+# Week 1 Contribution — Model Evaluation and Prediction
 
-**Member:** ZZIWA ARNOLD SSEBUNYA  
-**Role:** Data Preprocessing Research  
+**Name:** TENDO MALYAMU  
+**Group:** 12  
 **Project:** Machine Learning 4 – Logistic Regression from Scratch  
-**Group:** 12
+**Role:** Model Evaluation and Prediction
 
-## Assigned Task
+## My Assigned Area
 
-I am responsible for researching and documenting the data preprocessing
-component of the logistic regression project.
+My part of the project is to study how the logistic regression model
+will make predictions and how we can determine whether the model is
+performing well.
 
-The actual C++ implementation of the preprocessing module will be
-carried out during Week 2.
+For Week 1, I focused on understanding and documenting the concepts.
+The actual C++ implementation will be done in Week 2.
 
-## 1. Purpose of Data Preprocessing
+## What I Researched
 
-Data preprocessing prepares the dataset before it is given to the
-logistic regression model.
+### 1. Train and Test Data
 
-The preprocessing stage is important because the quality and format
-of the input data can affect the performance and reliability of the
-model.
+I looked at how the dataset can be divided into training and testing
+sets.
 
-## 2. Data Cleaning
+The training data will be used to teach the logistic regression model,
+while the test data will be used later to check how well the model
+performs on data that was not used during training.
 
-I researched the steps required to check the dataset for problems
-before training.
+The group will decide on the final split before implementation.
 
-These include:
+### 2. Model Prediction
 
-- Checking for missing values.
-- Checking for invalid or non-numeric values.
-- Checking for duplicate or invalid records where applicable.
-- Ensuring that the target variable is represented correctly.
-- Ensuring that the input features contain valid numerical values.
+After training, the logistic regression model will produce a
+probability for an input sample.
 
-## 3. Feature and Target Separation
+This probability can be converted into a class prediction using a
+threshold.
 
-The dataset contains input features and a target variable.
+For example, with a threshold of 0.5:
 
-The preprocessing stage will separate:
+- If the probability is 0.5 or higher, predict class 1.
+- If the probability is below 0.5, predict class 0.
 
-- **Features (X)** — the input variables used by the model.
-- **Target (y)** — the class that the model is expected to predict.
+This will allow us to compare the model's predictions with the actual
+classes in the test dataset.
 
-For the WDBC dataset, the diagnosis is the target variable:
+### 3. Confusion Matrix
 
-- `B` → 0 (Benign)
-- `M` → 1 (Malignant)
+I also studied the confusion matrix, which helps us see where the
+model's predictions are correct or incorrect.
 
-The remaining numerical measurements are used as features.
+It consists of:
 
-## 4. Feature Scaling
+- **True Positive (TP):** The model correctly predicts the positive
+  class.
+- **True Negative (TN):** The model correctly predicts the negative
+  class.
+- **False Positive (FP):** The model predicts positive when the actual
+  class is negative.
+- **False Negative (FN):** The model predicts negative when the actual
+  class is positive.
 
-I researched feature scaling because the dataset contains features
-with different numerical ranges.
+### 4. Performance Measures
 
-A scaling method such as standardization can be used:
+The main evaluation measures I researched are precision, recall and
+F1-score.
 
-z = (x - μ) / σ
+**Precision**
 
-where:
+Precision tells us how reliable the model's positive predictions are.
 
-- x is the original feature value
-- μ is the mean of the feature
-- σ is the standard deviation
+Precision = TP / (TP + FP)
 
-Scaling can help the optimization process behave more consistently
-when gradient-based training is used.
+**Recall**
 
-## 5. Training and Test Data
+Recall tells us how many of the actual positive cases the model was
+able to identify.
 
-I also researched the importance of separating the dataset into
-training and testing data.
+Recall = TP / (TP + FN)
 
-The training data is used to learn the model parameters, while the
-test data is kept separate and used to evaluate how well the trained
-model performs on unseen data.
+**F1-score**
 
-The exact train/test split will be agreed upon by the group before
-implementation.
+F1-score combines precision and recall into one measure.
 
-## 6. Preprocessing Pipeline
+F1 = 2 × (Precision × Recall) / (Precision + Recall)
 
-The planned preprocessing flow is:
+These measures will help the group evaluate the performance of the
+logistic regression model instead of relying only on the number of
+correct predictions.
 
-1. Load the dataset.
-2. Check the data for invalid or missing values.
-3. Separate features from the target.
-4. Convert categorical target values into numerical labels.
-5. Scale/standardize the features where appropriate.
-6. Prepare the processed data for the logistic regression model.
-7. Pass the processed data to the training stage.
+## Planned Workflow
 
-## 7. Coordination with Other Modules
+The evaluation process will follow these general steps:
 
-The preprocessing module will receive data from Joshua's DataLoader
-and provide processed features and labels to Sharon's logistic
-regression model and the training component.
+1. Train the logistic regression model using the training data.
+2. Give the test data to the trained model.
+3. Obtain predicted probabilities.
+4. Convert the probabilities into predicted classes.
+5. Compare the predicted classes with the actual labels.
+6. Construct the confusion matrix.
+7. Calculate precision, recall and F1-score.
+8. Interpret the results.
 
-The interfaces between these modules will be agreed upon before
-implementation.
+## Week 1 Progress
 
-## 8. Week 1 Outcome
+During Week 1, I researched the prediction and evaluation process,
+including train/test data, classification thresholds, confusion
+matrices, precision, recall and F1-score.
 
-During Week 1, I focused on understanding the preprocessing
-requirements, data cleaning, feature/target separation, feature
-scaling and preparation of data for logistic regression.
+I did not submit C++ implementation during Week 1 because the actual
+coding phase will begin in Week 2.
 
-No C++ implementation was submitted as part of this Week 1
-contribution.
+## Next Step
 
-## 9. Next Steps
+In Week 2, I will implement the prediction and evaluation functions
+in C++ and connect them with the trained logistic regression model.
 
-In Week 2, I will implement the researched preprocessing procedures
-in C++ and integrate them with the DataLoader and logistic regression
-components.
+## AI Use
 
-## 10. AI Use
-
-AI tools were used to assist with understanding data preprocessing
-concepts and the mathematical principles behind feature
-standardization. The information will be reviewed and verified before
-implementation.
+AI tools were used to help me understand the evaluation concepts and
+their mathematical formulas. The information was reviewed and used to
+prepare for the implementation stage.
