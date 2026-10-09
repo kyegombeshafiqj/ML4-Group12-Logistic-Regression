@@ -14,4 +14,9 @@ struct Dataset {
     std::vector<Sample> samples;
 };
 
+struct ProcessedData {
+    std::vector<std::vector<double>> X;
+    std::vector<int> y;
+};
+
 } // namespace logistic
