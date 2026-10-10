@@ -67,12 +67,7 @@ double LogisticModel::predict_proba(
     return sigmoid(linearFunction(features));
 }
 
-// Method name used by Samalie's Trainer.
-double LogisticModel::predictProbability(
-    const std::vector<double>& features
-) const {
-    return predict_proba(features);
-}
+
 
 int LogisticModel::predict(
     const std::vector<double>& features
