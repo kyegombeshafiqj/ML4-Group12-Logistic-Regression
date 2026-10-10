@@ -68,7 +68,7 @@ double LogisticModel::predict_proba(
 }
 
 // Method name used by Samalie's Trainer.
-double LogisticModel::predictProbability(
+double LogisticModel::predict_proba(
     const std::vector<double>& features
 ) const {
     return predict_proba(features);

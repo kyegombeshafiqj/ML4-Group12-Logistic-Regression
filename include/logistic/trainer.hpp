@@ -9,7 +9,6 @@ class Trainer {
 public:
     explicit Trainer(const ModelConfig& config = ModelConfig{});
 
-    // Samalie: train Sharon's model using gradient descent.
     void train(
         LogisticModel& model,
         const ProcessedData& training_data
