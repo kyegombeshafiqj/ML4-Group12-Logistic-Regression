@@ -1,8 +1,4 @@
-
 #pragma once
-
-#include "logistic/types.hpp"
-#include "logistic/logistic_model.hpp"
 
 #include <cstddef>
 #include <string>
@@ -36,17 +32,19 @@ struct StatisticalAnalysisResult {
 class StatisticsAnalyzer {
 public:
     StatisticalAnalysisResult analyze(
-        const LogisticModel& model,
-        const ProcessedData& data
+        const std::vector<std::vector<double>>& X,
+        const std::vector<int>& y,
+        const std::vector<double>& weights
     ) const;
 
 private:
     static double logLikelihood(
-        const LogisticModel& model,
-        const ProcessedData& data
+        const std::vector<std::vector<double>>& X,
+        const std::vector<int>& y,
+        const std::vector<double>& weights
     );
 
     static double normalTwoSidedPValue(double z);
 };
 
-} 
+} // namespace logistic
