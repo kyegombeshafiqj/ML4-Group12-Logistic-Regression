@@ -28,6 +28,14 @@ ProcessedData Preprocessor::transform(const Dataset& dataset) const {
             );
         }
 
+        for (double value : sample.features) {
+            if (!std::isfinite(value)) {
+                throw std::invalid_argument(
+                    "Preprocessor: Features must be finite numbers."
+                );
+            }
+        }
+
         // Our project uses B = 0 and M = 1.
         if (sample.label != 0 && sample.label != 1) {
             throw std::invalid_argument(
@@ -49,7 +57,7 @@ std::pair<ProcessedData, ProcessedData> Preprocessor::split(
     const ProcessedData& data,
     double train_ratio
 ) const {
-    if (train_ratio <= 0.0 || train_ratio >= 1.0) {
+    if (!std::isfinite(train_ratio) || train_ratio <= 0.0 || train_ratio >= 1.0) {
         throw std::invalid_argument(
             "Preprocessor: train_ratio must be between 0 and 1."
         );
@@ -153,8 +161,8 @@ void Preprocessor::fit(const ProcessedData& training_data) {
         );
     }
 
-    means_.assign(feature_count, 0.0);
-    standard_deviations_.assign(feature_count, 0.0);
+    std::vector<double> new_means(feature_count, 0.0);
+    std::vector<double> new_standard_deviations(feature_count, 0.0);
 
     // Validate and calculate feature means.
     for (const auto& row : training_data.X) {
@@ -171,23 +179,23 @@ void Preprocessor::fit(const ProcessedData& training_data) {
                 );
             }
 
-            means_[j] += row[j];
+            new_means[j] += row[j];
         }
     }
 
-    for (double& mean : means_) {
+    for (double& mean : new_means) {
         mean /= static_cast<double>(n);
     }
 
     // Calculate population standard deviations.
     for (const auto& row : training_data.X) {
         for (std::size_t j = 0; j < feature_count; ++j) {
-            const double difference = row[j] - means_[j];
-            standard_deviations_[j] += difference * difference;
+            const double difference = row[j] - new_means[j];
+            new_standard_deviations[j] += difference * difference;
         }
     }
 
-    for (double& stddev : standard_deviations_) {
+    for (double& stddev : new_standard_deviations) {
         stddev = std::sqrt(stddev / static_cast<double>(n));
 
         // Constant features should not cause division by zero.
@@ -195,6 +203,8 @@ void Preprocessor::fit(const ProcessedData& training_data) {
             stddev = 1.0;
         }
     }
+    means_ = std::move(new_means);
+    standard_deviations_ = std::move(new_standard_deviations);
 }
 
 
@@ -237,5 +247,35 @@ ProcessedData Preprocessor::normalize(
 
     return normalized;
 }
+
+std::vector<double> Preprocessor::normalize_sample(
+    const std::vector<double>& sample
+) const {
+    if (means_.empty() || standard_deviations_.empty()) {
+        throw std::logic_error(
+            "Preprocessor: Call fit() before normalize_sample()."
+        );
+    }
+
+    if (sample.size() != means_.size()) {
+        throw std::invalid_argument(
+            "Preprocessor: Sample feature count does not match fitted data."
+        );
+    }
+
+    std::vector<double> normalized_sample(sample.size());
+
+    for (std::size_t j = 0; j < sample.size(); ++j) {
+        if (!std::isfinite(sample[j])) {
+            throw std::invalid_argument(
+                "Preprocessor: Features must be finite numbers."
+            );
+        }
+
+        normalized_sample[j] = (sample[j] - means_[j])
+                               / standard_deviations_[j];
+    }
+
+    return normalized_sample;
 
 } // namespace logistic
