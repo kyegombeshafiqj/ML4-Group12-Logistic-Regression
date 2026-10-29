@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <vector>
 #include <numeric>
 #include <random>
 #include <stdexcept>
