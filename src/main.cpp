@@ -60,29 +60,58 @@ statistical_weights.push_back(model.getBias());
 for (double weight : model.getWeights()) {
     statistical_weights.push_back(weight);
 }
-logistic::StatisticsAnalyzer analyzer;
-auto stats = analyzer.analyze(testing_data.X, testing_data.y, statistical_weights);
+    logistic::StatisticsAnalyzer analyzer;
+auto stats = analyzer.analyze(
+    testing_data.X,
+    testing_data.y,
+    statistical_weights
+);
+
 std::cout << "\n=== Statistical Analysis ===\n";
+
+std::cout << "Samples analyzed: "
+          << stats.sample_count << '\n';
 
 std::cout << "Log-likelihood: "
           << stats.log_likelihood << '\n';
 
-std::cout << "Null log-likelihood: "
-          << stats.null_log_likelihood << '\n';
+if (stats.pseudo_r2_available) {
+    std::cout << "Null log-likelihood: "
+              << stats.null_log_likelihood << '\n';
 
-std::cout << "McFadden Pseudo-R2: "
-          << stats.mcfadden_pseudo_r2 << '\n';
-          std::cout << "\n=== Coefficient Statistics ===\n";
+    std::cout << "McFadden Pseudo-R2: "
+              << stats.mcfadden_pseudo_r2 << '\n';
+} else {
+    std::cout << "McFadden Pseudo-R2: unavailable\n";
+}
+
+std::cout << "\n=== Coefficient Statistics ===\n";
 
 for (const auto& coefficient : stats.coefficients) {
     std::cout << coefficient.name
-              << " | Coefficient: " << coefficient.coefficient
-              << " | Standard Error: " << coefficient.standard_error
-              << " | Z-statistic: " << coefficient.z_statistic
-              << " | P-value: " << coefficient.p_value
-              << '\n';
+              << " | Coefficient: "
+              << coefficient.coefficient;
+
+    if (coefficient.standard_error_available) {
+        std::cout << " | Standard Error: "
+                  << coefficient.standard_error
+                  << " | Z-statistic: "
+                  << coefficient.z_statistic
+                  << " | P-value: "
+                  << coefficient.p_value;
+    } else {
+        std::cout << " | Standard Error: unavailable"
+                  << " | Z-statistic: unavailable"
+                  << " | P-value: unavailable";
+    }
+
+    std::cout << '\n';
 }
-        
+
+if (!stats.inference_note.empty()) {
+    std::cout << "\nStatistical analysis note: "
+              << stats.inference_note << '\n';
+}
         // 6. Evaluate the trained model
         logistic::Evaluator evaluator;
 
