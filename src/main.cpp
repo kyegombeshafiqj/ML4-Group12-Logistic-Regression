@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <exception>
+#include <vector>
 
 #include "logistic/data_loader.hpp"
 #include "logistic/preprocessing.hpp"
@@ -59,7 +60,7 @@ statistical_weights.push_back(model.getBias());
 
 for (double weight : model.getWeights()) {
     statistical_weights.push_back(weight);
-}
+}        
     logistic::StatisticsAnalyzer analyzer;
 auto stats = analyzer.analyze(
     testing_data.X,

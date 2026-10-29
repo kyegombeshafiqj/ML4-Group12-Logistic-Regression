@@ -23,6 +23,9 @@ public:
     // Apply the learned scaling parameters to data.
     ProcessedData normalize(const ProcessedData& data) const;
 
+    // Apply the learned scaling parameters to a single feature vector.
+    std::vector<double> normalize_sample(const std::vector<double>& sample) const;
+
 private:
     std::vector<double> means_;
     std::vector<double> standard_deviations_;
