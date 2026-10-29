@@ -278,5 +278,6 @@ std::vector<double> Preprocessor::normalize_sample(
     }
 
     return normalized_sample;
+}
 
 } // namespace logistic
