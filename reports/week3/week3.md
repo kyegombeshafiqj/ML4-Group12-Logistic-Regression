@@ -3,7 +3,7 @@
 ## Machine Learning 4: Logistic Regression from Scratch in C++
 
 **Group:** 12  
-**Reporting Period:** [Insert dates]  
+**Reporting Period:** 16/10/2026 
 **Prepared By:** Nabukeera Proscovia 25/u/0720
 
 ---
@@ -42,14 +42,14 @@ Update this table with verified progress.
 
 | Member | Responsibility | Week 3 Contribution |
 
-| Kyegombe Shafiq Junior | [Confirm role] | [Verified contribution] |
+| Kyegombe Shafiq Junior | Coordination & Integration | [Verified contribution] |
 | Nabukeera Proscovia | Documentation | [Verified contribution] |
 | Mulondo Joshua Jordan | Data loading | [Verified contribution] |
 | Zziwa Arnold Ssebunya | Preprocessing | [Verified contribution] |
 | Nalukwago Phiona Sharon | Logistic regression model | [Verified contribution] |
-| Samalie | Model training | [Verified contribution] |
+| Kyomuhendo Samalie | Model training | [Verified contribution] |
 | Mabanda Eriya Nesta | Statistical analysis | [Verified contribution] |
-| Malyamu Tendo | [Confirm role] | [Verified contribution] |
+| Malyamu Tendo | Evaluator Model | [Verified contribution] |
 
 ## 5. Integration and Testing
 
