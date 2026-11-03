@@ -490,6 +490,14 @@ It provides practical experience in machine learning principles and C++ software
 3. Bishop, C. M. (2006). *Pattern Recognition and Machine Learning*. Springer.
 4. Stroustrup, B. (2024). *Programming: Principles and Practice Using C++* (3rd ed.). Addison-Wesley Professional.
 
+# 19. AI USE
+* OpenAI. (2026). *ChatGPT* [AI assistant]. Used to provide supplementary assistance with understanding programming concepts, debugging guidance, mathematical explanations and improving technical documentation.
+
+* Meta Platforms, Inc. (2026). *Meta AI* [AI assistant]. Used to provide supplementary assistance with technical explanations, research guidance and clarification of project concepts.
+
+* GitHub, Inc. (2026). *GitHub Copilot* [AI coding assistant]. Used to provide supplementary coding guidance, code suggestions and assistance with troubleshooting during development.
+
+
 
 
 **End**
