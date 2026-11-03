@@ -221,27 +221,27 @@ for preparing the WDBC dataset for model training and evaluation.
 
 
 
-Week 4 Progress Report: Statistical Analysis Module
+## Week 4 Progress Report: Statistical Analysis Module
 
-Project: Machine Learning 4 – Logistic Regression from Scratch in C++
-Group: 12
-Module: Statistical Analysis
-Responsible Member: Phionah Sharon
-Repository: ML4-Group12-Logistic-Regression
+## Project: Machine Learning 4 – Logistic Regression from Scratch in C++
+## Group: 12
+## Module: Statistical Analysis
+## Responsible Member: Nalukwago Phionah Sharon
+## Repository: ML4-Group12-Logistic-Regression
 
-1. Introduction
+## 1. Introduction
 
 During Week 4, the group reviewed and improved the statistical analysis component of the Logistic Regression project. The work focused on examining the implementation of statistical calculations, improving the presentation of statistical results, and ensuring that the program communicated the limitations of coefficient inference appropriately.
 
 The review involved examining the "statistics.cpp" and "statistics.hpp" files, together with their integration in "main.cpp".
 
-2. Areas Reviewed and Rectified
+## 2. Areas Reviewed and Rectified
 
-2.1 Statistical analysis integration
+## 2.1 Statistical analysis integration
 
 The integration of the "StatisticsAnalyzer" class into the main program was reviewed. The statistical analysis section was adjusted to improve how the analyzer was initialized and how its results were obtained and presented.
 
-2.2 Log-likelihood and McFadden pseudo-R²
+## 2.2 Log-likelihood and McFadden pseudo-R²
 
 The group reviewed the calculation of the model log-likelihood, null log-likelihood and McFadden pseudo-R².
 
@@ -263,7 +263,7 @@ The program produced the following results:
 
 These values were checked for consistency with the implemented formula.
 
-2.3 Coefficient statistics
+## 2.3 Coefficient statistics
 
 The coefficient analysis was reviewed to examine the calculation of:
 
@@ -278,7 +278,7 @@ The review identified that some standard errors were unusually large and that mo
 
 Consequently, the group recognised that these coefficient statistics should be interpreted cautiously, particularly because the model uses L2 regularization.
 
-2.4 Validation and error handling
+## 2.4 Validation and error handling
 
 The statistical analysis implementation was reviewed for input validation. Checks include:
 
@@ -291,13 +291,13 @@ The statistical analysis implementation was reviewed for input validation. Check
 
 These checks help prevent invalid inputs and numerical problems from producing misleading statistical results.
 
-2.5 Statistical output and interpretation
+## 2.5 Statistical output and interpretation
 
 The statistical output was improved to make the analysis easier to understand. The program reports the number of samples analysed and provides an explanatory note concerning the limitations of approximate Wald p-values and regularization.
 
 The group also identified the importance of checking result-availability indicators before presenting coefficient statistics. Where inference cannot be reliably calculated, the program should communicate that limitation rather than present default values as valid statistical estimates.
 
-3. Results After the Review
+## 3. Results After the Review
 
 The program was executed successfully after the changes, producing the following statistical analysis results:
 
@@ -321,7 +321,7 @@ The confusion matrix contained 33 true positives, 78 true negatives, zero false 
 
 These classification results demonstrate promising predictive performance on the current test split. They are separate from the statistical coefficient-inference results.
 
-4. Challenges Identified
+## 4. Challenges Identified
 
 The main challenge identified during the review was the unusually large standard errors and high approximate p-values for several coefficients.
 
@@ -329,7 +329,7 @@ The group recognised that the WDBC dataset contains related measurements, which 
 
 Another consideration is that the model uses L2 regularization, while the current coefficient-inference calculation is based on an ordinary logistic regression information matrix. Therefore, the reported Wald p-values should not be treated as definitive evidence of statistical significance.
 
-5. Remaining Improvements
+## 5. Remaining Improvements
 
 The following improvements were identified for further investigation:
 
@@ -339,7 +339,7 @@ The following improvements were identified for further investigation:
 4. Clearly distinguish model evaluation on testing data from statistical inference.
 5. Add further tests for invalid inputs and cases where coefficient inference is unavailable.
 
-6. Conclusion
+## 6. Conclusion
 
 The Week 4 review improved the examination and presentation of the statistical analysis component. The program successfully executed and generated log-likelihood, null log-likelihood, McFadden pseudo-R² and coefficient statistics.
 
