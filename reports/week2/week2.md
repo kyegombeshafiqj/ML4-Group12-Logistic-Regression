@@ -2,144 +2,92 @@
 
 **Group:** 12  
 **Project:** Multivariable Logistic Regression implemented from scratch in C++  
-**Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC)  
+**Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC) — 569 total samples (30 numerical features, ID, and diagnosis label where `B` = `0` and `M` = `1`)  
 **Reporting Period:** Week 2  
-**Status:** Core data/model/training workflow integrated; evaluation and statistical analysis modules are works in progress.
-
-## 1. Week 2 Objective
-
-The objective for Week 2 was to move from research and module planning into C++ implementation, connect the data-loading, preprocessing, logistic-regression model and training components, and establish a working application that can be extended with evaluation and statistical analysis.
-
-## 2. Work Completed So Far
-
-### 2.1 Data Loading
-
-The project uses the WDBC dataset, which contains 569 samples. Each record has an ID, a diagnosis label, and 30 numerical features.
-
-The agreed label convention is:
-
-- `B` (benign) = `0`
-- `M` (malignant) = `1`
-
-The data-loading component is available in the project and is used by the integrated application to load the dataset.
-
-### 2.2 Preprocessing
-
-The preprocessing component has been integrated into the application workflow. The intended sequence is:
-
-1. Convert the loaded records into feature rows (`X`) and labels (`y`).
-2. Split the data into training and testing subsets.
-3. Fit normalization parameters using the training subset only.
-4. Apply those training-derived parameters to both subsets.
-
-This avoids using information from the test set to calculate normalization parameters.
-
-### 2.3 Logistic Regression Model
-
-The logistic-regression model implementation is present in the repository and is used by the training workflow. The project uses shared types and model interfaces rather than defining a separate model for each module.
-
-### 2.4 Training Implementation and Integration
-
-Samalie's training implementation was submitted through pull request **#17**, from `feature/samalie-training`. The coordinator's integration and correction work was submitted through pull request **#18**, from `fix/logistic-model-method`.
-
-Both pull requests are shown as merged into `main`. The coordinator's changes connected loading, preprocessing, splitting, normalization and model training in `main.cpp`.
-
-The integrated workflow was previously run locally. That run reported:
-
-- Total samples loaded: **569**
-- Training samples: **455**
-- Testing samples: **114**
-- Reported final training loss: approximately **0.0444252**
-
-These values describe the earlier local run. They should be confirmed again by rebuilding and running the current `main` branch before being treated as final verification results.
-
-### 2.5 GitHub Workflow
-
-The team has been using feature branches and pull requests to keep module contributions separate. Future work should remain on each member's own feature branch, based on the latest `main`, and be submitted through a pull request for review before merging.
-
-## 3. Current Project Status
-
-| Component | Status at Report Preparation |
-|---|---|
-| WDBC dataset and label convention | Defined; dataset loading is used by the application |
-| Data loader | Implemented and integrated |
-| Preprocessing, splitting and normalization | Implemented and integrated |
-| Logistic-regression model | Implemented and integrated with training workflow |
-| Training implementation | Samalie's work merged; coordinator's integration and corrections merged |
-| Main application workflow | Integrated and previously run locally; current `main` needs a fresh build and test |
-| Evaluation module — Tendo | **Work in progress** |
-| Statistical analysis module — Nesta | **Work in progress** |
-| End-to-end evaluation/statistics integration | Pending |
-| Final documentation and comprehensive testing | Pending |
-
-## 4. Work in Progress
-
-### 4.1 Tendo — Evaluation Module
-
-Tendo's evaluation module is a work in progress.
-
-Planned files:
-
-- `include/logistic/evaluator.hpp`
-- `src/evaluator.cpp`
-- `tests/test_evaluator.cpp`
-
-The module is intended to evaluate predictions on held-out testing data and report:
-
-- Confusion matrix: TP, TN, FP and FN
-- Accuracy
-- Precision
-- Recall/sensitivity
-- Specificity
-- F1-score
-
-The implementation should use the existing `ProcessedData` and `LogisticModel` interfaces and should not reimplement training or define duplicate shared data structures.
-
-### 4.2 Nesta — Statistical Analysis Module
-
-Nesta's statistical-analysis module is a work in progress.
-
-Planned files:
-
-- `include/logistic/statistics.hpp`
-- `src/statistics.cpp`
-- `tests/test_statistics.cpp`
-
-The module is intended to calculate:
-
-- Model log-likelihood
-- Null-model log-likelihood
-- McFadden's pseudo-R²
-- Coefficient standard errors and Wald statistics, where numerically available
-- Approximate two-sided p-values, with limitations documented
-
-The implementation must handle invalid data and singular or unstable information matrices safely. Conventional Wald p-values from a regularized model should be described as approximate and interpreted cautiously.
-
-## 5. Issues and Risks Identified
-
-1. **Integration compatibility:** Samalie's training work and the coordinator's corrections were merged through separate pull requests. The current `main` branch must be rebuilt and tested to confirm that the combined code is consistent.
-2. **Unverified current build:** The earlier successful local run is encouraging, but a fresh build from the latest `main` is still required.
-3. **Modules in progress:** Tendo's evaluation and Nesta's statistical analysis are still in progress, so the full pipeline is not yet complete.
-4. **Shared-file conflicts:** Both modules may require output integration in `main.cpp`. The coordinator should coordinate these changes to avoid conflicting edits.
-5. **Testing gap:** Training loss alone does not demonstrate classification performance. Evaluation on held-out data and module tests remain necessary.
-
-## 6. Immediate Next Steps
-
-1. Rebuild and run the latest `main` branch, record any errors, and confirm the data counts.
-2. Tendo should continue the evaluation module on `feature/tendo-evaluation`, test the evaluator, and submit a pull request when ready.
-3. Nesta should continue the statistical-analysis module on `feature/nesta-statistics`, test the module, and submit a separate pull request when ready.
-4. The coordinator should review both pull requests against the existing interfaces and coordinate any `main.cpp` integration.
-5. After both modules are merged, run the full application and verify the evaluation and statistical outputs.
-6. Update the README and project report with verified results rather than estimated or assumed metrics.
-
-## 7. Week 2 Conclusion
-
-Week 2 has established the core implementation path for the ML4 logistic-regression project. The data loader, preprocessing workflow, logistic-regression model and Samalie's training implementation have been integrated through pull requests. A previous local run loaded all 569 WDBC samples, split them into 455 training and 114 testing samples, and completed training with a reported loss of approximately 0.0444252.
-
-However, the current combined code still needs a fresh build and verification, while Tendo's evaluation module and Nesta's statistical-analysis module remain works in progress. The next priority is to complete those modules and integrate them into a fully tested application.
+**Status:** Core data/model/training workflow integrated; evaluation and statistical analysis modules are works in progress.  
+**Compiled by:** **Kyegombe Shafiq .J.** assisted by **Nabukeera Proscovia** and **Mulondo Joshua Jordan**.
 
 ---
 
-**Reporting Note:** This report records the status known at preparation time. Update the build and test statements after checking the latest `main` branch, and report evaluation or statistical-analysis results only after the corresponding implementations have been integrated and verified.
-The updated repo and report will be availed once evaluation and statistics part are done, tested and implemented.
-**Compiled by:** **Kyegombe Shafiq .J.** assisted by **Nabukeera Proscovia** and **Mulondo Joshua Jordan**.
+## 1. Week 2 Objective
+The objective for Week 2 was to transition from research and module planning into C++ implementation. This involved connecting data-loading, preprocessing, the logistic-regression model, and training components into a unified working application that can be extended with evaluation and statistical analysis modules.
+
+---
+
+## 2. Work Completed So Far
+
+### 2.1 Data Loading & Preprocessing
+* **Data Loading:** The project utilizes the WDBC dataset containing 569 samples. Each record includes an ID, a binary diagnosis label (`B` = `0`, `M` = `1`), and 30 numerical features. The data-loading component is fully integrated into the application workflow.
+* **Preprocessing Workflow:** The preprocessing pipeline is fully integrated using a strict leakage-free sequence:
+  1. Convert loaded records into feature rows ($X$) and labels ($y$).
+  2. Split the dataset into training and testing subsets.
+  3. Fit normalization parameters **using the training subset only**.
+  4. Apply those training-derived parameters to both subsets to prevent data leakage from the test set.
+
+### 2.2 Logistic Regression Model & Training Integration
+* **Model Integration:** The logistic-regression model is implemented using shared types and model interfaces rather than separate models per module.
+* **Pull Requests & Code Merging:** 
+  * **Samalie's Training Work:** Submitted and merged via pull request **#17** (`feature/samalie-training`).
+  * **Coordinator's Integration & Fixes:** Submitted and merged via pull request **#18** (`fix/logistic-model-method`), which connected loading, preprocessing, splitting, normalization, and model training in `main.cpp`.
+* **Local Run Metrics:** An earlier local test run reported:
+  * Total samples loaded: **569**
+  * Training samples: **455**
+  * Testing samples: **114**
+  * Final training loss: approximately **0.0444252**  
+  *(Note: These figures require formal re-confirmation via a fresh build and run of the current `main` branch before being treated as final).*
+
+### 2.3 GitHub Workflow
+The team continues to use feature branches and pull requests to maintain organized module contributions. All future work is required to branch from the latest `main`, undergo peer review via a pull request, and be approved prior to merging.
+
+---
+
+## 3. Current Project Status Summary
+
+| Component | Status | Notes / Responsible Team Member |
+|---|---|---|
+| WDBC dataset & label convention | **Complete** | Defined and integrated into application |
+| Data loader | **Complete** | Implemented and integrated |
+| Preprocessing, splitting & normalization | **Complete** | Implemented and integrated securely |
+| Logistic-regression model | **Complete** | Implemented and integrated with training |
+| Training implementation | **Complete** | Samalie (PR #17) & Coordinator (PR #18) merged |
+| Main application workflow | **Needs Verification** | Integrated; requires a fresh build on current `main` |
+| Evaluation module (`evaluator.cpp`) | **In Progress** | Assigned to **Tendo** |
+| Statistical analysis module (`statistics.cpp`) | **In Progress** | Assigned to **Nesta** |
+| End-to-end evaluation & statistics integration | **Pending** | Awaiting module completions |
+| Final documentation & comprehensive testing | **Pending** | Planned for post-integration |
+
+---
+
+## 4. Work in Progress (Detailed Module Breakdown)
+
+### 4.1 Evaluation Module — Tendo
+* **Planned Files:** `include/logistic/evaluator.hpp`, `src/evaluator.cpp`, `tests/test_evaluator.cpp`
+* **Objective:** Evaluate predictions on held-out test data using existing `ProcessedData` and `LogisticModel` interfaces (avoiding duplicate data structures or retraining).
+* **Metrics to Output:** Confusion matrix (TP, TN, FP, FN), Accuracy, Precision, Recall/Sensitivity, Specificity, and F1-score.
+
+### 4.2 Statistical Analysis Module — Nesta
+* **Planned Files:** `include/logistic/statistics.hpp`, `src/statistics.cpp`, `tests/test_statistics.cpp`
+* **Objective:** Compute statistical significance and model fit metrics safely, handling invalid data and singular/unstable information matrices.
+* **Metrics to Output:** Model log-likelihood, Null-model log-likelihood, McFadden's pseudo-$R^2$, coefficient standard errors, Wald statistics, and approximate two-sided p-values (with regularized model limitations properly documented).
+
+---
+
+## 5. Issues and Risks Identified
+1. **Integration Compatibility:** Because Samalie's training work and the coordinator's corrections were merged through separate pull requests, the current `main` branch must be rebuilt and tested to verify overall consistency.
+2. **Unverified Current Build:** While the earlier local run was successful, a fresh build from the latest `main` branch is mandatory before finalizing metrics.
+3. **In-Progress Modules:** Tendo's evaluation and Nesta's statistical analysis are still under development, meaning the full end-to-end pipeline is not yet complete.
+4. **Shared-File Conflicts:** Both modules will require output integration inside `main.cpp`, requiring careful coordination by the coordinator to prevent conflicting edits.
+5. **Testing Gap:** Training loss alone does not validate clinical or classification performance; rigorous testing on held-out test data is still required.
+
+---
+
+## 6. Immediate Next Steps
+1. Rebuild and run the latest `main` branch, log any compiler errors, and confirm data sample counts.
+2. **Tendo** to continue developing the evaluation module on `feature/tendo-evaluation`, run unit tests, and submit a pull request upon completion.
+3. **Nesta** to continue developing the statistical-analysis module on `feature/nesta-statistics`, run unit tests, and submit a pull request upon completion.
+4. The coordinator to review incoming pull requests against existing interfaces and manage `main.cpp` integration.
+5. Execute the fully integrated application, verify evaluation and statistical outputs against ground truth, and update project documentation with final verified results.
+
+---
+
+**Reporting Note:** This report reflects the status at the time of preparation. Build statements, evaluation metrics, and statistical outputs will be updated in the final repository release once all modules are fully tested and merged.

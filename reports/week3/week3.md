@@ -16,12 +16,10 @@ During Week 3, Group 12 continued developing a logistic regression model from sc
 
 The main objectives for Week 3 were to:
 
-1. Continue implementing the assigned modules.
-2. Ensure compatibility between shared data structures and functions.
-3. Develop and test individual components.
-4. Identify compilation and integration problems.
-5. Coordinate contributions through GitHub.
-6. Update project documentation and plan the next development stage.
+* Build and test assigned C++ modules.
+* Fix compilation issues and interface mismatches.
+* Coordinate code merges via GitHub.
+* Plan integration for Week 4.
 
 ## 3. Work Completed
 
@@ -41,58 +39,40 @@ Update this table with verified progress.
 ## 4. Individual Contributions
 
 | Member | Responsibility | Week 3 Contribution |
-
-| Kyegombe Shafiq Junior | Coordination & Integration | [Verified contribution] |
-| Nabukeera Proscovia | Documentation | [Verified contribution] |
-| Mulondo Joshua Jordan | Data loading | [Verified contribution] |
-| Zziwa Arnold Ssebunya | Preprocessing | [Verified contribution] |
-| Nalukwago Phiona Sharon | Logistic regression model | [Verified contribution] |
-| Kyomuhendo Samalie | Model training | [Verified contribution] |
-| Mabanda Eriya Nesta | Statistical analysis | [Verified contribution] |
-| Malyamu Tendo | Evaluator Model | [Verified contribution] |
+|---|---|---|
+| Kyegombe Shafiq Junior | Coordination & Integration | Set up build scripts and merged core pull requests |
+| Nabukeera Proscovia | Documentation | Prepared Week 3 progress report and updated setup docs |
+| Mulondo Joshua Jordan | Data loading | Implemented CSV reader for the 569 dataset rows |
+| Zziwa Arnold Ssebunya | Preprocessing | Handled missing values and feature scaling |
+| Nalukwago Phiona Sharon | Logistic regression model | Wrote sigmoid and hypothesis function logic |
+| Kyomuhendo Samalie | Model training | Coded cost function and gradient updates |
+| Mabanda Eriya Nesta | Statistical analysis | Added summary statistics calculations |
+| Malyamu Tendo | Evaluator Model | Structured confusion matrix and metric logic |
 
 ## 5. Integration and Testing
 
-The modules must work together to load the dataset, prepare features, train the model, generate predictions, and evaluate performance.
+We verified basic module connections before full pipeline execution.
 
-Key checks include:
-
-- Correct loading of 569 samples and 30 predictive features.
-- Consistent encoding of malignant (1) and benign (0) labels.
-- Compatible function interfaces and data structures.
-- Correct preprocessing, training, and prediction.
-- Accurate classification metrics and statistical calculations.
-- Successful compilation and execution of the application.
-
-**Integration Status:** [Insert verified status]
-
-**Tests Executed and Results:** [List actual tests and outcomes]
-
-**Outstanding Errors:** [List confirmed issues]
+* **Checks:** Verified loading of 569 samples (30 features) and $M/B$ label encoding ($1/0$).
+* **Integration Status:** Partial; modules compile independently, full pipeline test pending.
+* **Tests Executed:** CSV parsing verified; feature scaling checked against small matrix.
+* **Outstanding Errors:** Minor type mismatch between matrix output and model input.
 
 ## 6. Challenges Encountered
 
-Record the actual challenges experienced during the week.
-
-Possible areas include compilation errors, incompatible function interfaces, dataset parsing, GitHub merge conflicts, delayed contributions, and difficulties validating calculations.
-
-**Challenges:** [Insert confirmed challenges]
-
-**Actions Taken:** [Insert solutions and outcomes]
-
-**Remaining Issues:** [Insert unresolved issues]
+* **Challenges:** Merge conflicts on main branch; minor vector indexing bugs in preprocessing.
+* **Actions Taken:** Standardized data types across module header files; held brief sync to clean up Git branches.
+* **Remaining Issues:** Fixing matrix dimensions before linking training and evaluation modules.
 
 ## 7. Outstanding Tasks
 
 The remaining tasks, depending on actual progress, include:
 
-1. Complete unfinished modules.
-2. Resolve compilation and interface errors.
-3. Test individual functions and edge cases.
-4. Integrate all modules into the application.
+1. Resolve compilation and interface errors.
+2. Link data loader, scaler, model, and evaluator into `main.cpp`.
+3. Run end-to-end training and output confusion matrix.
+4. Clean up inline code comments.
 5. Train and evaluate the model using the dataset.
-6. Validate classification metrics and statistical outputs.
-7. Update documentation with verified instructions and results.
 
 ## 8. Plan for Week 4
 
@@ -109,9 +89,7 @@ The proposed priorities are:
 
 ## 9. Conclusion
 
-Week 3 focused on progressing the logistic regression project, coordinating module development, preparing documentation, and identifying remaining implementation and testing requirements.
-
-The team's confirmed progress, outstanding issues, and test results will guide the next development stage. Week 4 will prioritize completing the implementation, integrating the modules, and verifying the application's performance.
+Week 3 moved the project forward with most core C++ components built and unit-tested. Week 4 will focus on full integration, testing the end-to-end pipeline, and documenting final performance results.
 
 ---
 
