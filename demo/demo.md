@@ -1,21 +1,3 @@
-
-## FOLDER ORGANISATION
-ML4-Group12-Logistic-Regression/
-│
-├── demo/
-│   ├── DEMO.md
-│   ├── image 1.png
-│   ├── image 2.png
-│   │
-│   └── examples simulations/
-│       └── expected_output.png
-│
-├── data/
-├── include/
-├── src/
-├── tests/
-├── examples/
-└── README.md
 # Application Demonstration
 
 ## 1. Introduction
